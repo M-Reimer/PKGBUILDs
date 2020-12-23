@@ -10,17 +10,17 @@ usage() {
 
 add_pkg() {
 	local pkgname="$1"
-	[[ -z $pkgname ]] && usage 
+	[[ -z $pkgname ]] && usage
 
 	git remote add -f $pkgname "ssh://aur@aur.archlinux.org/$pkgname.git"
-	git subtree add --prefix "aur/$pkgname" $pkgname master
+	git subtree add --prefix "$pkgname" $pkgname master
 }
 
 update_pkg() {
 	local pkgname="$1"
-	[[ -z $pkgname ]] && usage 
+	[[ -z $pkgname ]] && usage
 
-	git subtree push --prefix "aur/$pkgname" $pkgname master
+	git subtree push --prefix "$pkgname" $pkgname master
 }
 
 import_pkgs() {
